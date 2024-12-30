@@ -46,11 +46,19 @@ It is usually given in problem statements so that solution doesn't overflow in c
 - Addition
   - (((a% M) + (b % M))% M)
 - Subtraction
-  - (((a% M) - (b % M) **+ M**)% M)  *added M because C++ cannot handle modulo of negative integers.*
+  - (((a% M) - (b % M)) % M **+ M**)% M  *added M because C++ cannot handle modulo of negative integers.*
 - Multiplication
   - (((a% M) * (b % M))% M)
 - Division
   - Mod inverse, mod exponentiation
 
+## Greatest common divisor
 
+GCD(A,B) is the greatst common divisor of A and B. 
+<br/>
+LCM(A,B) is the least common multiple of A and B.
+<br/>
+To calculate GCD efficiently, we can use the Euclidean Algorithm.
+<br/>
+Euclidean Algorithm states that GCD(A,B) = GCD(B %A, A). When A=0, the solution is B.
  
