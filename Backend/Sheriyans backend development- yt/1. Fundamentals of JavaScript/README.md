@@ -5,7 +5,8 @@
 
 ### forEach()
 
-The forEach() method in JavaScript is used to iterate over an array and execute a provided function once for each element. It does not return a new array.
+The forEach() method in JavaScript is used to iterate over an array and execute a provided function once for each element.
+It does not return a new array.
 
 syntax:
 ```
@@ -23,4 +24,14 @@ arr.forEach(function(val){
 ```
 
 ### map()
+
+The map() method in JavaScript creates a new array by applying a function to each element of an existing array without modifying the original array.
+
+
+
+
+
+
+
+
 
