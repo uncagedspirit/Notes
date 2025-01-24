@@ -18,6 +18,16 @@ NPM is the default package manager for Node.js. It helps install, manage, and sh
 - A module in Node.js is a reusable block of code that can be exported and imported in other files. It helps keep code organized, reusable, and maintainable.
 - Examples: fs, http, path, os.
 
+### fs (File system)
+- The fs (File System) module in Node.js allows you to interact with the file system (read, write, update, delete files and directories). It is a built-in core module, so no installation is needed.
+> Importing the fs module
+```js
+const fs = require('fs');
+```
+
+
+
+
   
   
 
