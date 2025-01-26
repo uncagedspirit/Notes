@@ -25,8 +25,33 @@ NPM is the default package manager for Node.js. It helps install, manage, and sh
 const fs = require('fs');
 ```
 
+- Synchronous methods (blocking)
+  
+  - Read file synchronously:
+    ```js
+    const data = fs.readFileSync('example.txt', 'utf8');
+    console.log(data);
+    ```
+    The 'utf8' (optional) encoding tells Node.js to interpret the file's raw binary data as a human-readable string in the UTF-8 character set.
+    Without utf8, it returns a buffer, binary data which is not human readable string.
 
+  - Write file synchronously:
+    ```js
+    fs.writeFileSync('example.txt', 'Hello, Node.js!');
+    console.log("File written successfully!");
+    ```
 
+- Asynchronous methods (non blocking)
+
+  - Read a file asynchronously:
+    ```js
+    fs.readFile('example.txt', 'utf8', (err, data) => {
+      if (err) throw err;
+      console.log(data);
+    });
+    ```
+
+  - 
 
   
   
