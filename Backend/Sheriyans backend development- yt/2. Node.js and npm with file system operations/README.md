@@ -41,6 +41,9 @@ const fs = require('fs');
     console.log("File written successfully!");
     ```
 
+    Synchronous methods are not generally used unless necessary. However, asynchronous methods can be made synchronous by simply appending __Sync to the method name.
+
+    <br/>
 - Asynchronous methods (non blocking)
 
   - Read a file asynchronously:
@@ -50,10 +53,76 @@ const fs = require('fs');
       console.log(data);
     });
     ```
-
-  - 
-
+    
+  - Write a file asynchronously:
+    ```js
+    fs.writeFile('example.txt', 'Hello, Async Node.js!', (err) => {
+      if (err) throw err;
+      console.log("File written successfully!");
+    });
+    ```
   
+  - Append file asynchronously:
+    ```js
+    fs.appendFile('example.txt', '\nNew appended text!', (err) => {
+      if (err) throw err;
+      console.log('Data appended successfully!');
+    });
+    ```
+    
+  - Rename file asynchronously:
+    ```js 
+    fs.rename('oldName.txt', 'newName.txt', (err) => {
+      if (err) throw err;
+      console.log('File renamed successfully!');
+    });
+    ```
+    
+  - Copying file asynchronously:
+    ```js
+    fs.copyFile('source.txt', 'destination.txt', (err) => {
+      if (err) throw err;
+      console.log('File copied successfully!');
+    });
+    ```
   
+  - Deleting a file asynchronously:
+    ```js
+    fs.unlink('file.txt', (err) => {
+      if (err) throw err;
+      console.log('File deleted successfully!');
+    });
+    ```
+
+    <br/><br/><br/>
+
+## HTTP and HTTPS
+
+#### HTTP
+- HTTP (HyperText Transfer Protocol) is a stateless request-response protocol used in web communication between clients (browsers, mobile apps) and servers.
+- It supports methods like GET (retrieve data), POST (send data), PUT (update data), DELETE (remove data), and more.
+- It operates over port 80 (HTTP) and port 443 (HTTPS for encrypted communication).
+
+#### HTTPS
+HTTPS (HyperText Transfer Protocol Secure) is a secure version of HTTP that encrypts communication using SSL/TLS (Secure Sockets Layer/Transport Layer Security).
+
+Key Features of HTTPS:
+- Data Encryption → Protects data from eavesdropping and man-in-the-middle attacks.
+- Authentication → Ensures that the server is legitimate using SSL/TLS certificates.
+- Integrity → Prevents data from being altered during transmission.
+- Default Port → 443 (instead of 80 for HTTP).
+
+#### Creating a server
+
+```js
+const http = require('http');
+
+const server = http.createServer(function(req, res){
+  res.end("Hello world");
+})
+
+server.listen(3000);
+```
+
 
 
