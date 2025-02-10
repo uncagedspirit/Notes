@@ -1,0 +1,27 @@
+Professional:
+Project
+Freelancing
+DSA
+Dev
+Blog
+
+Health:
+Exercise
+Walk
+Stretching
+Sleep (in hours)
+Hydration (in glass)
+Weight (measure)
+
+Mental health:
+meditation
+Connecting (emojis for family & friends)
+Mood tracker emoji
+
+Productivity:
+All tasks done
+Editing
+
+Personal:
+Reading
+Screen time
