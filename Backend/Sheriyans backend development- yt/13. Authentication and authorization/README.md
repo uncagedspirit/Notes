@@ -19,3 +19,19 @@ Authorization is the process of granting or restricting access to specific resou
 2. Access Control Lists (ACLs)
 3. OAuth Tokens (Third-party API access)
 
+
+### Cookies 
+
+Cookies are small pieces of data stored on a user's browser by websites. They help websites remember user preferences, login sessions, and tracking information.
+
+- Uses of cookies
+1. User Authentication (Keeps users logged in)
+2. Personalization (Stores preferences like theme settings)
+3. Session Management (Tracks user sessions)
+4. Analytics & Tracking (Used by advertisers for user behavior analysis)
+
+
+### Setting a cookie 
+
+
+
