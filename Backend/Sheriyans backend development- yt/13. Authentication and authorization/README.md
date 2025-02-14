@@ -9,6 +9,8 @@ Authentication is the process of verifying a user's identity before granting acc
 3. Biometric Authentication (Fingerprint, Face ID)
 4. Multi-Factor Authentication (MFA) (Combining two or more methods)
 
+<br/><br/>
+
 ### Authorization
 
 Authorization is the process of granting or restricting access to specific resources based on user permissions. It happens after authentication.
@@ -19,6 +21,7 @@ Authorization is the process of granting or restricting access to specific resou
 2. Access Control Lists (ACLs)
 3. OAuth Tokens (Third-party API access)
 
+<br/><br/>
 
 ### Cookies 
 
@@ -52,6 +55,46 @@ app.get('/read', function(req,res){
 
 app.listen(3000);
 ```
+
+<br/><br/>
+
+### Session
+
+A session is a temporary data storage mechanism used to store user-specific information on the server for a limited time.
+
+#### How sessions work
+
+- User logs in → Server creates a session and stores user data.
+- Server sends a session ID to the client (stored in cookies).
+- Client sends the session ID with every request.
+- Server validates session ID → If valid, user stays authenticated.
+- Session expires after a set time or on logout.
+
+```js
+const session = require('express-session');
+const express = require('express');
+const app = express();
+
+app.use(session({
+  secret: 'your_secret_key', 
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } 
+}));
+
+app.get('/', (req, res) => {
+  req.session.user = "Saakshi"; 
+  res.send('Session set!');
+});
+
+app.get('/check', (req, res) => {
+  res.send(req.session.user ? `User: ${req.session.user}` : 'No session found');
+});
+
+app.listen(3000);
+```
+
+<br/><br/>
 
 ### Bcrypt
 
@@ -130,8 +173,11 @@ app.get('/verify', (req, res) => {
 
 app.listen(3000, () => console.log('Server running on port 3000'));
 ```
+<br/>
 
-### Simple password verification system using Express.js and Bcrypt hashing
+#### Simple password verification system using Express.js and Bcrypt hashing
+<details>
+<summary> Click to expand code </summary>
 
 ```js
 const express = require('express');
@@ -220,12 +266,93 @@ app.get('/failure', (req, res) => {
 
 app.listen(3000, () => console.log('Server running on port 3000'));
 ```
+</details>
+
+<br/><br/>
 
 ### JsonWebToken 
 
+JWT is a compact, URL-safe token used for authentication and authorization in web applications.
+
+#### Structure of JWT
+
+- A JWT consists of three parts, separated by dots (.):
+
+```js
+header.payload.signature
+```
+
+Example:
+
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMjM0NTY3ODkwIiwiaWF0IjoxNjkxMjM0NTY3fQ.JpZb9qU8uW1Ljb1Xk5eBbMQoHBrLmWmP3f5pG0R3J8Q
+```
+
+1. Header
+
+contains token type (JWT) and algorithm (```HS256```, ```RS256```)
+
+```js
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+```
+
+2. Payload
+
+Contains user-specific claims (data).
+
+```js
+{
+  "userId": "1234567890",
+  "iat": 1691234567
+}
+```
+
+3. Signature
+
+Ensures integrity by signing the token using a secret key.
 
 
+#### How JWT works
 
+- User logs in → Server generates a JWT with user details.
+- JWT is sent to the client → Stored in local storage or cookies.
+- Client sends JWT with requests → In headers (Authorization: Bearer <token>).
+- Server verifies JWT → If valid, grants access; otherwise, rejects.
+
+##### Use cases
+
+- **Authentication** → Verify user identity (Login System).
+- **Authorization** → Control access to APIs.
+- **Stateless Sessions** → No need for server-side session storage.
+
+#### JWT Authentication with Cookies in Express.js
+
+```js
+const express = require('express');
+const app = express();
+const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
+
+app.use(cookieParser());
+
+app.get("/", function(req, res){
+    let token = jwt.sign({email: "sdk@example.com"}, "secret");
+    res.cookie("token", token);
+    console.log(token);
+    res.send("done");
+})
+
+app.get("/read", function(req, res){
+    let data =  jwt.verify(req.cookies.token, "secret");  
+    console.log(data);
+    res.send(data);
+})
+
+app.listen(3000);
+```
 
 
 
