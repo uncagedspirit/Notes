@@ -1,0 +1,16 @@
+{
+  "name": "data-association-backend",
+  "version": "1.0.0",
+  "description": "- Stores related data in separate collections/tables and links them using IDs.\r - Reduces data duplication, ensures consistency.\r - Requires joins or multiple queries.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongoose": "^8.10.1"
+  }
+}
